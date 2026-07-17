@@ -19,7 +19,7 @@ function createApp() {
   return app;
 }
 
-function startServer(app, requestedPort = process.env.PORT || 5002, host = process.env.HOST || '127.0.0.1') {
+function startServer(app, requestedPort = process.env.PORT || 5002, host = process.env.HOST || '0.0.0.0') {
   const preferredPort = Number(requestedPort);
   const initialPort = Number.isInteger(preferredPort) && preferredPort > 0 ? preferredPort : 5002;
 
