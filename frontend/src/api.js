@@ -1,4 +1,5 @@
-const API = '/api/invoices';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL ? import.meta.env.VITE_API_BASE_URL.replace(/\/+$/, '') : '';
+const API = `${BASE_URL}/api/invoices`;
 
 export async function fetchInvoices(params = {}) {
   const query = new URLSearchParams(params).toString();
