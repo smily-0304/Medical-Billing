@@ -33,9 +33,10 @@ function startServer(app, requestedPort = process.env.PORT || 5002, host = proce
       });
 
       server.on('error', (err) => {
-        if (err.code === 'EADDRINUSE' && portToTry !== 0) {
-          console.warn(`Port ${portToTry} is already in use. Trying an available port.`);
-          tryListen(0);
+        if (err.code === 'EADDRINUSE') {
+          const nextPort = portToTry + 1;
+          console.warn(`Port ${portToTry} is already in use. Trying ${nextPort}.`);
+          tryListen(nextPort);
         } else {
           reject(err);
         }
